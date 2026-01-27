@@ -1,0 +1,30 @@
+[project]
+name = "pyqt6-magic-shop"
+version = "0.1.0"
+description = "PyQt6 desktop app with SQLite, tests, and clean architecture."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+  "PyQt6>=6.7",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+  "black>=24.0",
+]
+
+[project.scripts]
+magic-shop = "magic_shop.app:main"
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["src"]

@@ -1,0 +1,6 @@
+[
+  {"name": "Aether Compass", "rarity": "Rare", "price": 120, "stock": 4},
+  {"name": "Frost Sigil", "rarity": "Common", "price": 35, "stock": 12},
+  {"name": "Sunfire Vial", "rarity": "Epic", "price": 260, "stock": 2},
+  {"name": "Chrono Rune", "rarity": "Legendary", "price": 520, "stock": 1}
+]
