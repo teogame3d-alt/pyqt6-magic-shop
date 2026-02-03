@@ -1,9 +1,16 @@
 from __future__ import annotations
 
+"""RO: Dialoguri UI reutilizabile.
+EN: Reusable UI dialogs.
+"""
+
 from PyQt6.QtWidgets import QDialog, QFormLayout, QLineEdit, QSpinBox, QDialogButtonBox
 
 
 class ArtifactDialog(QDialog):
+    """RO: Dialog de editare/creare pentru un artefact.
+    EN: Create/edit dialog for an artifact.
+    """
     def __init__(self, title: str, name: str = "", rarity: str = "", price: int = 0, stock: int = 0):
         super().__init__()
         self.setWindowTitle(title)
@@ -31,6 +38,9 @@ class ArtifactDialog(QDialog):
         layout.addRow(buttons)
 
     def values(self) -> tuple[str, str, int, int]:
+        """RO: Valorile introduse de utilizator.
+        EN: Values entered by the user.
+        """
         return (
             self.name_input.text().strip(),
             self.rarity_input.text().strip(),

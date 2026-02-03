@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+"""RO: Utilitare SQLite pentru schema si seed data.
+EN: SQLite helpers for schema and seed data.
+"""
+
 import json
 import sqlite3
 from pathlib import Path
@@ -16,12 +20,18 @@ CREATE TABLE IF NOT EXISTS artifacts (
 
 
 def get_connection(db_path: Path) -> sqlite3.Connection:
+    """RO: Deschide conexiune SQLite cu row_factory dict-like.
+    EN: Open SQLite connection with dict-like row factory.
+    """
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 
 
 def init_db(db_path: Path, seed_path: Path | None = None) -> None:
+    """RO: Creeaza schema si incarca seed daca exista.
+    EN: Create schema and load seed data if present.
+    """
     db_path.parent.mkdir(parents=True, exist_ok=True)
     with get_connection(db_path) as conn:
         conn.executescript(SCHEMA_SQL)

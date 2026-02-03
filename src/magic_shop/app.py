@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+"""RO: Entry point pentru aplicatia PyQt6 (usor de rulat in IDE).
+EN: Entry point for the PyQt6 app (easy to run from IDE).
+"""
+
 from pathlib import Path
 
 from PyQt6.QtWidgets import QApplication
@@ -11,6 +15,9 @@ from .ui.main_window import MainWindow
 
 
 def main() -> None:
+    """RO: Initializeaza DB, serviciile si porneste UI-ul.
+    EN: Initialize DB, services, and launch the UI.
+    """
     base_dir = Path(__file__).resolve().parents[2]
     db_path = base_dir / "data" / "magic_shop.db"
     seed_path = base_dir / "data" / "seed.json"

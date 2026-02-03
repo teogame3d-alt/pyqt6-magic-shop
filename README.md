@@ -37,3 +37,8 @@ See `docs/DECISIONS.md`.
 - SQLite persistence with schema
 - Business rules covered by tests
 - Reproducible data seeding
+
+## Data
+- \\data/magic_shop.db\\ is created at runtime and is not tracked.
+- \\data/seed.json\\ contains synthetic seed items used on first launch.
+

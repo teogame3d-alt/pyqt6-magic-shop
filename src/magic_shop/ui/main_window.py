@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+"""RO: Fereastra principala pentru administrarea inventarului.
+EN: Main window for inventory management.
+"""
+
 from PyQt6.QtWidgets import (
     QMainWindow,
     QMessageBox,
@@ -17,6 +21,9 @@ from .widgets import ArtifactDialog
 
 
 class MainWindow(QMainWindow):
+    """RO: UI pentru listare, adaugare si operatii pe stoc.
+    EN: UI for listing, adding, and stock operations.
+    """
     def __init__(self, service: ShopService):
         super().__init__()
         self.service = service
@@ -55,6 +62,9 @@ class MainWindow(QMainWindow):
         self.refresh()
 
     def refresh(self) -> None:
+        """RO: Reincarca tabelul cu datele curente.
+        EN: Reload the table with current data.
+        """
         data = self.service.list_inventory()
         self.table.setRowCount(len(data))
         for r, art in enumerate(data):
@@ -66,12 +76,18 @@ class MainWindow(QMainWindow):
         self.table.resizeColumnsToContents()
 
     def selected_id(self) -> int | None:
+        """RO: Intoarce id-ul selectat sau None.
+        EN: Return selected id or None.
+        """
         row = self.table.currentRow()
         if row < 0:
             return None
         return int(self.table.item(row, 0).text())
 
     def add_artifact(self) -> None:
+        """RO: Deschide dialogul de adaugare.
+        EN: Open the add dialog.
+        """
         dlg = ArtifactDialog("Add Artifact")
         if dlg.exec():
             name, rarity, price, stock = dlg.values()
@@ -82,6 +98,9 @@ class MainWindow(QMainWindow):
                 QMessageBox.critical(self, "Error", str(exc))
 
     def edit_artifact(self) -> None:
+        """RO: Editeaza artefactul selectat.
+        EN: Edit the selected artifact.
+        """
         art_id = self.selected_id()
         if art_id is None:
             return
@@ -99,6 +118,9 @@ class MainWindow(QMainWindow):
                 QMessageBox.critical(self, "Error", str(exc))
 
     def delete_artifact(self) -> None:
+        """RO: Sterge artefactul selectat (cu confirmare).
+        EN: Delete selected artifact (with confirmation).
+        """
         art_id = self.selected_id()
         if art_id is None:
             return
@@ -110,6 +132,9 @@ class MainWindow(QMainWindow):
                 QMessageBox.critical(self, "Error", str(exc))
 
     def buy_artifact(self) -> None:
+        """RO: Cumpara o cantitate (scade stocul).
+        EN: Buy a quantity (decrease stock).
+        """
         art_id = self.selected_id()
         if art_id is None:
             return
@@ -122,6 +147,9 @@ class MainWindow(QMainWindow):
                 QMessageBox.critical(self, "Error", str(exc))
 
     def restock_artifact(self) -> None:
+        """RO: Reaprovizioneaza stocul pentru artefact.
+        EN: Restock the artifact.
+        """
         art_id = self.selected_id()
         if art_id is None:
             return
