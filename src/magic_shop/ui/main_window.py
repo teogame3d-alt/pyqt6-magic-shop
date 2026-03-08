@@ -74,6 +74,9 @@ class MainWindow(QMainWindow):
             self.table.setItem(r, 3, QTableWidgetItem(str(art.price)))
             self.table.setItem(r, 4, QTableWidgetItem(str(art.stock)))
         self.table.resizeColumnsToContents()
+        if data and self.table.currentRow() < 0:
+            # Keep actions usable right after load by preselecting the first row.
+            self.table.selectRow(0)
 
     def selected_id(self) -> int | None:
         """RO: Intoarce id-ul selectat sau None.
@@ -83,6 +86,20 @@ class MainWindow(QMainWindow):
         if row < 0:
             return None
         return int(self.table.item(row, 0).text())
+
+    def require_selected_id(self, action_name: str) -> int | None:
+        """RO: Cere selectie valida inainte de o actiune.
+        EN: Require a valid selection before an action.
+        """
+        art_id = self.selected_id()
+        if art_id is None:
+            QMessageBox.information(
+                self,
+                "No selection",
+                f"Select an artifact row first, then use {action_name}.",
+            )
+            return None
+        return art_id
 
     def add_artifact(self) -> None:
         """RO: Deschide dialogul de adaugare.
@@ -101,7 +118,7 @@ class MainWindow(QMainWindow):
         """RO: Editeaza artefactul selectat.
         EN: Edit the selected artifact.
         """
-        art_id = self.selected_id()
+        art_id = self.require_selected_id("Edit")
         if art_id is None:
             return
         items = [a for a in self.service.list_inventory() if a.id == art_id]
@@ -121,10 +138,11 @@ class MainWindow(QMainWindow):
         """RO: Sterge artefactul selectat (cu confirmare).
         EN: Delete selected artifact (with confirmation).
         """
-        art_id = self.selected_id()
+        art_id = self.require_selected_id("Delete")
         if art_id is None:
             return
-        if QMessageBox.question(self, "Confirm", "Delete selected artifact?"):
+        confirm = QMessageBox.question(self, "Confirm", "Delete selected artifact?")
+        if confirm == QMessageBox.StandardButton.Yes:
             try:
                 self.service.delete_artifact(art_id)
                 self.refresh()
@@ -135,7 +153,7 @@ class MainWindow(QMainWindow):
         """RO: Cumpara o cantitate (scade stocul).
         EN: Buy a quantity (decrease stock).
         """
-        art_id = self.selected_id()
+        art_id = self.require_selected_id("Buy")
         if art_id is None:
             return
         qty, ok = QInputDialog.getInt(self, "Buy", "Quantity", 1, 1, 1000)
@@ -150,7 +168,7 @@ class MainWindow(QMainWindow):
         """RO: Reaprovizioneaza stocul pentru artefact.
         EN: Restock the artifact.
         """
-        art_id = self.selected_id()
+        art_id = self.require_selected_id("Restock")
         if art_id is None:
             return
         qty, ok = QInputDialog.getInt(self, "Restock", "Quantity", 1, 1, 10000)
