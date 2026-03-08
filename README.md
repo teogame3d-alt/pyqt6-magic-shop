@@ -41,7 +41,7 @@ python -m venv .venv
 .venv\Scripts\python -m magic_shop
 ```
 
-## Demo (Employer)
+## Demo Flow
 1. Launch the app and review the seeded inventory.
 2. Execute a buy/restock flow and observe the data update.
 3. Show a simple price adjustment rule in action.
@@ -57,3 +57,4 @@ See `docs/DECISIONS.md`.
 ## Data
 - `data/magic_shop.db` is created at runtime and is not tracked.
 - `data/seed.json` contains synthetic seed items used on first launch.
+
