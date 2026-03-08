@@ -68,3 +68,7 @@ See `docs/DECISIONS.md`.
 - `data/magic_shop.db` is created at runtime and is not tracked.
 - `data/seed.json` contains synthetic seed items used on first launch.
 
+
+## Mentor Notes
+See docs/MENTOR_NOTES.md for architecture decisions, UI iteration rationale, and v1.1 design context.
+
