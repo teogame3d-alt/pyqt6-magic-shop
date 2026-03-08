@@ -1,10 +1,30 @@
 # PyQt6 Magic Shop
 
 A clean PyQt6 desktop app that simulates a small inventory system for a fantasy artifact shop.
-The focus is professional: SQLite persistence, tested service layer, and a simple UI that an
-employer can run immediately.
+The focus is professional: SQLite persistence, tested service layer, and a simple UI.
+
+[![CI](https://github.com/teogame3d-alt/pyqt6-magic-shop/actions/workflows/ci.yml/badge.svg)](https://github.com/teogame3d-alt/pyqt6-magic-shop/actions/workflows/ci.yml)
 
 ![UI](docs/images/ui_overview.png)
+
+## Problem
+Small desktop workflows often need reliable, offline CRUD with clear business rules.
+
+## Solution
+A PyQt6 UI backed by SQLite with a service layer that enforces business logic and tests.
+
+## Tech
+Python, PyQt6, SQLite, pytest, GitHub Actions.
+
+## Impact
+- Demonstrates clean architecture (UI, services, repositories)
+- Reliable persistence and deterministic business rules
+- Tests protect core operations
+
+## Engineering Focus
+- Layered design with clear responsibilities
+- Offline-first persistence with predictable schema bootstrap
+- Service-layer validation covered by automated tests
 
 ## Features
 - PyQt6 desktop UI (table + dialogs + actions)
@@ -21,24 +41,19 @@ python -m venv .venv
 .venv\Scripts\python -m magic_shop
 ```
 
+## Demo (Employer)
+1. Launch the app and review the seeded inventory.
+2. Execute a buy/restock flow and observe the data update.
+3. Show a simple price adjustment rule in action.
+
 ## Tests
 ```bash
 .venv\Scripts\python -m pytest
 ```
 
-## Data
-The first launch initializes the database and loads seed data from `data/seed.json`.
-
 ## Design Decisions
 See `docs/DECISIONS.md`.
 
-## Hiring Checklist
-- Clean architecture: UI, services, repositories
-- SQLite persistence with schema
-- Business rules covered by tests
-- Reproducible data seeding
-
 ## Data
-- \\data/magic_shop.db\\ is created at runtime and is not tracked.
-- \\data/seed.json\\ contains synthetic seed items used on first launch.
-
+- `data/magic_shop.db` is created at runtime and is not tracked.
+- `data/seed.json` contains synthetic seed items used on first launch.
