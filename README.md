@@ -5,7 +5,13 @@ The focus is professional: SQLite persistence, tested service layer, and a simpl
 
 [![CI](https://github.com/teogame3d-alt/pyqt6-magic-shop/actions/workflows/ci.yml/badge.svg)](https://github.com/teogame3d-alt/pyqt6-magic-shop/actions/workflows/ci.yml)
 
-![UI](docs/images/ui_overview.png)
+![Main Application UI](docs/images/ui_overview.png)
+
+Main screen of the application (inventory CRUD + business operations).
+
+![Arcade Mode Update v1.1](docs/images/arcade_mode.png)
+
+Arcade Mode was added in `v1.1.0` as an interactive update that converts score into stock rewards.
 
 ## Problem
 Small desktop workflows often need reliable, offline CRUD with clear business rules.
