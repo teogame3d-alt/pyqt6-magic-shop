@@ -17,6 +17,7 @@ from PyQt6.QtWidgets import (
 )
 
 from ..services import ShopService
+from .arcade_dialog import ArcadeDialog
 from .widgets import ArtifactDialog
 
 
@@ -44,14 +45,16 @@ class MainWindow(QMainWindow):
         btn_delete = QPushButton("Delete")
         btn_buy = QPushButton("Buy")
         btn_restock = QPushButton("Restock")
+        btn_arcade = QPushButton("Arcade")
 
         btn_add.clicked.connect(self.add_artifact)
         btn_edit.clicked.connect(self.edit_artifact)
         btn_delete.clicked.connect(self.delete_artifact)
         btn_buy.clicked.connect(self.buy_artifact)
         btn_restock.clicked.connect(self.restock_artifact)
+        btn_arcade.clicked.connect(self.open_arcade)
 
-        for b in [btn_add, btn_edit, btn_delete, btn_buy, btn_restock]:
+        for b in [btn_add, btn_edit, btn_delete, btn_buy, btn_restock, btn_arcade]:
             toolbar.addWidget(b)
 
         container = QWidget()
@@ -178,3 +181,33 @@ class MainWindow(QMainWindow):
                 self.refresh()
             except Exception as exc:
                 QMessageBox.critical(self, "Error", str(exc))
+
+    def open_arcade(self) -> None:
+        """RO: Deschide mini-game-ul arcade si ofera reward pe stoc.
+        EN: Open arcade mini-game and offer stock reward.
+        """
+        dlg = ArcadeDialog(self)
+        dlg.exec()
+        reward = dlg.reward_units()
+        if reward <= 0:
+            return
+
+        art_id = self.selected_id()
+        if art_id is None:
+            QMessageBox.information(
+                self,
+                "Arcade reward",
+                f"You earned {reward} stock units. Select an artifact row, then play again to apply.",
+            )
+            return
+
+        try:
+            self.service.restock(art_id, reward)
+            self.refresh()
+            QMessageBox.information(
+                self,
+                "Arcade reward applied",
+                f"Added +{reward} stock units to selected artifact.",
+            )
+        except Exception as exc:
+            QMessageBox.critical(self, "Error", str(exc))

@@ -30,6 +30,7 @@ Python, PyQt6, SQLite, pytest, GitHub Actions.
 - PyQt6 desktop UI (table + dialogs + actions)
 - SQLite persistence with automatic schema creation
 - Service layer with business rules (buy/restock/price adjustments)
+- Arcade mini-game mode integrated in UI (click challenge + score-based rewards)
 - Unit tests for database + service logic
 - Clean structure: `src/`, `tests/`, `data/`, `docs/`
 
@@ -44,7 +45,10 @@ python -m venv .venv
 ## Demo Flow
 1. Launch the app and review the seeded inventory.
 2. Execute a buy/restock flow and observe the data update.
-3. Show a simple price adjustment rule in action.
+3. Open `Arcade` mode, play the challenge, then apply earned reward units to stock.
+
+## Version Notes
+- `v1.1.0`: Added integrated arcade challenge in the toolbar and score-to-stock reward flow.
 
 ## Tests
 ```bash
