@@ -1,8 +1,8 @@
 from pathlib import Path
 
 from magic_shop.db import init_db
-from magic_shop.repositories import ArtifactRepository
 from magic_shop.models import Artifact
+from magic_shop.repositories import ArtifactRepository
 
 
 def test_crud(tmp_path: Path) -> None:

@@ -1,8 +1,8 @@
-from __future__ import annotations
-
 """RO: Utilitare SQLite pentru schema si seed data.
 EN: SQLite helpers for schema and seed data.
 """
+
+from __future__ import annotations
 
 import json
 import sqlite3

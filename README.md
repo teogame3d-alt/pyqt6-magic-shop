@@ -33,6 +33,17 @@ Python, PyQt6, SQLite, pytest, GitHub Actions.
 - Offline-first persistence with predictable schema bootstrap
 - Service-layer validation covered by automated tests
 
+## Proof of Work
+- The PyQt6 UI runs as an offline desktop app backed by SQLite.
+- Tests focus on repository/service behavior so business rules can be checked without manual clicking.
+- Runtime databases are generated locally and not committed.
+- Screenshots show both the main CRUD workflow and the arcade update.
+
+## Difficult Parts / Tradeoffs
+- GUI testing can become fragile, so the project keeps business behavior in services and repositories.
+- SQLite keeps setup simple and reviewable, but the architecture leaves room for another storage backend later.
+- Arcade Mode is deliberately small: it adds personality without taking over the core inventory app.
+
 ## Features
 - PyQt6 desktop UI (table + dialogs + actions)
 - KPI summary cards and inventory filtering

@@ -1,6 +1,6 @@
-from __future__ import annotations
-
 """Pure game-related helpers for the arcade mode."""
+
+from __future__ import annotations
 
 
 def reward_from_score(score: int) -> int:

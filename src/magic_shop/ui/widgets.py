@@ -1,17 +1,24 @@
-from __future__ import annotations
-
 """RO: Dialoguri UI reutilizabile.
 EN: Reusable UI dialogs.
 """
 
-from PyQt6.QtWidgets import QDialog, QFormLayout, QLineEdit, QSpinBox, QDialogButtonBox
+from __future__ import annotations
+
+from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QFormLayout, QLineEdit, QSpinBox
 
 
 class ArtifactDialog(QDialog):
     """RO: Dialog de editare/creare pentru un artefact.
     EN: Create/edit dialog for an artifact.
     """
-    def __init__(self, title: str, name: str = "", rarity: str = "", price: int = 0, stock: int = 0):
+    def __init__(
+        self,
+        title: str,
+        name: str = "",
+        rarity: str = "",
+        price: int = 0,
+        stock: int = 0,
+    ):
         super().__init__()
         self.setWindowTitle(title)
         layout = QFormLayout(self)

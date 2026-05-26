@@ -1,8 +1,8 @@
-from __future__ import annotations
-
 """RO: Modele de baza pentru domeniul Magic Shop.
 EN: Core domain models for Magic Shop.
 """
+
+from __future__ import annotations
 
 from dataclasses import dataclass
 

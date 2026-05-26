@@ -1,8 +1,8 @@
-from __future__ import annotations
-
 """RO: Fereastra principala pentru administrarea inventarului.
 EN: Main window for inventory management.
 """
+
+from __future__ import annotations
 
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QColor
@@ -422,7 +422,8 @@ class MainWindow(QMainWindow):
             QMessageBox.information(
                 self,
                 "Arcade reward",
-                f"You earned {reward} stock units. Select an artifact row, then play again to apply.",
+                f"You earned {reward} stock units. "
+                "Select an artifact row, then play again to apply.",
             )
             return
 

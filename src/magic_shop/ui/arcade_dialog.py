@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """Arcade mini-game integrated in the Magic Shop UI.
 
 The game is intentionally lightweight and dependency-free (PyQt only):
@@ -8,9 +6,11 @@ The game is intentionally lightweight and dependency-free (PyQt only):
 - score can be converted into shop stock rewards
 """
 
+from __future__ import annotations
+
 from random import randint
 
-from PyQt6.QtCore import QPointF, QTimer, Qt
+from PyQt6.QtCore import QPointF, Qt, QTimer
 from PyQt6.QtGui import QColor, QPainter, QPen
 from PyQt6.QtWidgets import (
     QDialog,

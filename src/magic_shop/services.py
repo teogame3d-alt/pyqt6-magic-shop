@@ -1,8 +1,8 @@
-from __future__ import annotations
-
 """RO: Logica de business a magazinului (validari + reguli).
 EN: Shop business logic (validation + rules).
 """
+
+from __future__ import annotations
 
 from dataclasses import replace
 
@@ -31,7 +31,14 @@ class ShopService:
             raise ValueError("Invalid price or stock")
         return self.repo.add(Artifact(None, name.strip(), rarity.strip(), price, stock))
 
-    def update_artifact(self, artifact_id: int, name: str, rarity: str, price: int, stock: int) -> None:
+    def update_artifact(
+        self,
+        artifact_id: int,
+        name: str,
+        rarity: str,
+        price: int,
+        stock: int,
+    ) -> None:
         """RO: Valideaza si actualizeaza un artefact.
         EN: Validate and update an artifact.
         """

@@ -1,11 +1,11 @@
-from __future__ import annotations
-
 """RO: Acces la date prin repository pattern.
 EN: Data access via repository pattern.
 """
 
+from __future__ import annotations
+
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 
 from .db import get_connection
 from .models import Artifact
@@ -36,7 +36,13 @@ class ArtifactRepository:
                 (artifact.name, artifact.rarity, artifact.price, artifact.stock),
             )
             conn.commit()
-            return Artifact(cur.lastrowid, artifact.name, artifact.rarity, artifact.price, artifact.stock)
+            return Artifact(
+                cur.lastrowid,
+                artifact.name,
+                artifact.rarity,
+                artifact.price,
+                artifact.stock,
+            )
 
     def update(self, artifact: Artifact) -> None:
         """RO: Actualizeaza un artefact existent.
