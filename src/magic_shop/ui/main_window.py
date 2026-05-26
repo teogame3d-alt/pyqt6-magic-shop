@@ -159,7 +159,7 @@ class MainWindow(QMainWindow):
         self.refresh()
 
     def _build_hero(self) -> QFrame:
-        """Build the recruiter-friendly summary band above the inventory table."""
+        """Build the summary band above the inventory table."""
 
         hero = QFrame()
         hero.setObjectName("hero")

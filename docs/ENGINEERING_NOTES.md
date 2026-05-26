@@ -1,4 +1,4 @@
-# Mentor Notes
+# Engineering Notes
 
 ## Why this project exists
 I wanted a realistic desktop app that proves architecture discipline beyond CRUD: service layer, repository layer, tests, and UI iteration.

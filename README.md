@@ -26,7 +26,7 @@ Python, PyQt6, SQLite, pytest, GitHub Actions.
 - Demonstrates clean architecture (UI, services, repositories)
 - Reliable persistence and deterministic business rules
 - Tests protect core operations
-- Shows UI iteration: the app now presents status metrics and recruiter-friendly visual structure
+- Shows UI iteration: the app now presents status metrics and a clearer review-friendly visual structure
 
 ## Engineering Focus
 - Layered design with clear responsibilities
@@ -72,6 +72,6 @@ See `docs/DECISIONS.md`.
 - `data/seed.json` contains synthetic seed items used on first launch.
 
 
-## Mentor Notes
-See docs/MENTOR_NOTES.md for architecture decisions, UI iteration rationale, and v1.1 design context.
+## Engineering Notes
+See docs/ENGINEERING_NOTES.md for architecture decisions, UI iteration rationale, and v1.1 design context.
 
