@@ -13,6 +13,9 @@ Main screen of the application (inventory CRUD, business operations, KPI cards, 
 
 Arcade Mode was added in `v1.1.0` as an interactive update that converts score into stock rewards.
 
+**Status:** working offline desktop application with tested service/repository boundaries and a
+documented UI iteration path. See [the changelog](CHANGELOG.md).
+
 ## Problem
 Small desktop workflows often need reliable, offline CRUD with clear business rules.
 
